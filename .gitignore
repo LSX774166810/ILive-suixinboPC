@@ -1,0 +1,10 @@
+*.log
+*.opensdf
+*.sdf
+*.obj
+*.v12.suo
+Debug/
+GeneratedFiles/
+txsdklog/
+ipch/
+
