@@ -10,8 +10,10 @@ enum E_NetworkReply
 	E_NetReplyError,
 };
 
+//接收函数回调
 typedef void (*ReceiveFun)(int errCode, const QByteArray& bytes, void* pCusData);
 
+//网络信息发送和接受
 class NetworkHelper : public QObject
 {
 	Q_OBJECT
@@ -32,13 +34,13 @@ private:
 
 private:
 	QNetworkAccessManager* m_pNetworkAccessManager;
-	QTimer*		m_pTimer;
+	QTimer*		m_pTimer;//计时器
 
-	QString		m_url;
-	QString		m_content;	
+	QString		m_url;//目标url
+	QString		m_content;//待发送数据	
 	ReceiveFun  m_receiver;
-	void*		m_pCusdata;
-	int			m_timeout;
+	void*		m_pCusdata;//对象指针
+	int			m_timeout;//超时时间 ms
 };
 
 #endif//NetworkHelper_h_

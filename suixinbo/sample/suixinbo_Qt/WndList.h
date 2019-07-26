@@ -3,6 +3,7 @@
 
 #include "ui_WndList.h"
 
+//请选择要分享的窗口
 class WndList : public QDialog
 {
 	Q_OBJECT
@@ -11,6 +12,8 @@ public:
 
 private:
 	WndList(QWidget *parent = 0, Qt::WindowFlags f = 0);
+
+	//刷新列表liWndList显示信息
 	int Refresh();
 
 private slots:

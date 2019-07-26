@@ -9,4 +9,7 @@ txsdklog/
 ipch/
 *.pro
 *.pri
-
+*.pdb
+*.ilk
+*.exe
+Release/
