@@ -7,4 +7,6 @@ Debug/
 GeneratedFiles/
 txsdklog/
 ipch/
+*.pro
+*.pri
 
