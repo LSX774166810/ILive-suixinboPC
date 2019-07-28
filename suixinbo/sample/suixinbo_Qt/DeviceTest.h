@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "ui_DeviceTest.h"
 
+//…Ë±∏≤‚ ‘
 class DeviceTest : public QDialog
 {
 	Q_OBJECT

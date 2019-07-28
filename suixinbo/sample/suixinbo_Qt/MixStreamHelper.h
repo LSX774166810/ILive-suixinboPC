@@ -9,7 +9,7 @@
 
 
 
-
+//混流器
 class MixStreamHelper
 {
 	
@@ -25,18 +25,18 @@ public:
 	void doRequest();
 	
 private:
-	QString genSign(QString key, QString time);
-	QString genContent(std::vector<std::pair<std::string, bool>> ids);
+	QString genSign(QString key, QString time);//计算md5
+	QString genContent(std::vector<std::pair<std::string, bool>> ids);//将streams转换为待发送数据
 	static void OnNetworkReply(int errCode, const QByteArray& bytes, void* pCusData);
-	std::string genStreamCode(std::string id, bool aux, int roomId, std::string code);
+	std::string genStreamCode(std::string id, bool aux, int roomId, std::string code);//获取直播码
 	int getTemplate();
 
 private:
-	std::vector<std::pair<std::string, bool>> streams_;
+	std::vector<std::pair<std::string, bool>> m_streams;//视频流
 	unsigned bigIndex_;
-	int _roomId;
-	QString	  m_url;
-	QString	  m_content;
+	int m_roomID;//房间号
+	QString	  m_url;//目标url
+	QString	  m_content;//待发送数据
 	SxbRecFun m_receiver;
 	void*	  m_pCusdata;
 	static std::string outCode;

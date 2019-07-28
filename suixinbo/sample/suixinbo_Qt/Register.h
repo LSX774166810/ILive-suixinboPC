@@ -3,6 +3,7 @@
 
 #include "ui_Register.h"
 
+//×¢²áÕËºÅ
 class Register : public QDialog
 {
 	Q_OBJECT
@@ -13,8 +14,8 @@ private slots:
 	void onBtnRegister();
 
 private:
-	bool isDigitStr(const QString& str);
-	void sxbRegister();
+	bool isDigitStr(const QString& str);//ÊÇ·ñÎª´¿Êý×Ö
+	void sxbRegister();//×¢²á
 	static void OnRegister(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData);
 
 private:

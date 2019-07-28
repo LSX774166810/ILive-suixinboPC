@@ -13,3 +13,6 @@ ipch/
 *.ilk
 *.exe
 Release/
+*.vcxproj.user
+*.dat
+*.config

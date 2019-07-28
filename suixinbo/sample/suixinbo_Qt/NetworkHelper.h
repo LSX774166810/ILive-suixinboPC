@@ -18,8 +18,8 @@ class NetworkHelper : public QObject
 {
 	Q_OBJECT
 public:
-	static void get(const QString& url, ReceiveFun receiver, void* data, int timeout = LimitTimeOut);
-	static void post(const QString& url, const QString& content, ReceiveFun receiver, void* data, int timeout = LimitTimeOut);
+	static void get(const QString& url, ReceiveFun receiver, void* data, int timeout = LimitTimeOut);//获取信息
+	static void post(const QString& url, const QString& content, ReceiveFun receiver, void* data, int timeout = LimitTimeOut);//发送信息
 
 private slots:
 	void OnReplyFinished(QNetworkReply* reply);
@@ -29,8 +29,8 @@ private:
 	NetworkHelper(QString url, QString content, ReceiveFun receiver, void* pCusData, int timeout);
 	~NetworkHelper();
 	
-	void excuteGet();
-	void excutePost();
+	void excuteGet();//获取信息
+	void excutePost();//发送信息
 
 private:
 	QNetworkAccessManager* m_pNetworkAccessManager;

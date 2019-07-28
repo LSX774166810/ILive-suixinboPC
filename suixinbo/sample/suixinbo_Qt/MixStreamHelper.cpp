@@ -5,8 +5,8 @@
 
 MixStreamHelper::MixStreamHelper(std::vector<std::pair<std::string, bool>> streams, const QString sig, int roomId, void *data)
 {
-	streams_ = streams;
-	_roomId = roomId;
+	m_streams = streams;
+	m_roomID = roomId;
 	QString urlBase = "http://fcgi.video.qcloud.com/common_access?";
 	QString time = QString::number(QDateTime::currentMSecsSinceEpoch() / 1000 + 60*1000);	
 	QString md5 = genSign(sig, time);
@@ -67,7 +67,7 @@ QString MixStreamHelper::genContent(std::vector<std::pair<std::string, bool>> id
 	para["app_id"] = 1253488539;
 	para["interface"] = "mix_streamv2.start_mix_stream_advanced";
 	
-	MixStreamHelper::outCode = genStreamCode(ids[0].first + "_0", false, _roomId, "8525");//8525是腾讯云提供的bizid
+	MixStreamHelper::outCode = genStreamCode(ids[0].first + "_0", false, m_roomID, "8525");//8525是腾讯云提供的bizid
 	para["mix_stream_session_id"] = MixStreamHelper::outCode; 
 	para["output_stream_id"] = MixStreamHelper::outCode;
 	para["output_stream_type"] = 1;
@@ -78,7 +78,7 @@ QString MixStreamHelper::genContent(std::vector<std::pair<std::string, bool>> id
 	{
 		
 		Json::Value streamItem;
-		streamItem["input_stream_id"] = genStreamCode(ids[i].first, ids[i].second, _roomId, "8525");
+		streamItem["input_stream_id"] = genStreamCode(ids[i].first, ids[i].second, m_roomID, "8525");
 		//layout param 这里用模板
 		Json::Value layout;
 		layout["image_layer"] = i + 1;
@@ -106,7 +106,7 @@ std::string MixStreamHelper::genStreamCode(std::string id, bool aux, int roomId,
 
 int MixStreamHelper::getTemplate()
 {
-	switch(streams_.size())
+	switch(m_streams.size())
 	{
 	case 2:
 		return 10;
