@@ -20,6 +20,7 @@ struct Room
 	}info;
 };
 
+//房间列表单个对象
 class RoomListItem : public QWidget
 {
 	Q_OBJECT

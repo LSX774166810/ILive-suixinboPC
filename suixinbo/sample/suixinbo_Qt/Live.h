@@ -85,7 +85,7 @@ private slots:
 	void OnSbSkinWhiteChanged(int value);
 	void OnHsMediaFileRateChanged(int value);
 	void OnHeartBeatTimer();//触发 心跳计时器
-	void OnFillFrameTimer();
+	void OnFillFrameTimer();//触发 自定义采集计时器
 	void OnPlayMediaFileTimer();//触发 自动重播计时器
 	void OnMemberListMenu(QPoint point);//触发 菜单选项
 	void OnActInviteInteract();//菜单-连麦 点击 
@@ -208,7 +208,7 @@ private:
 	QVector<RoomMember> m_roomMemberList;
 
 	QTimer*			m_pTimer;//心跳计时器
-	QTimer*			m_pFillFrameTimer;
+	QTimer*			m_pFillFrameTimer;//自定义采集计时器（自定义采集每帧间隔时间）
 	QTimer*			m_pPlayMediaFileTimer;//本地文件播放计时器，到时自动重播
 	
 	int				m_nCurSelectedMember;

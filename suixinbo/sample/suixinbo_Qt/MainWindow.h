@@ -7,14 +7,14 @@
 #include "RoomListItem.h"
 #include "DeviceTest.h"
 
-#define OnePageCout 10
+#define OnePageCout 10 //一页显示房间数量
 
 enum E_LoginState
 {
-	E_InvalidState = -1,
-	E_Logout,
-	E_Logining,
-	E_Login,
+	E_InvalidState = -1,//不可用
+	E_Logout,//已登出
+	E_Logining,//登录中
+	E_Login,//已登录
 };
 
 class MainWindow : public QMainWindow
@@ -30,19 +30,19 @@ public:
 
 	void setCurRoomIdfo(const Room& roominfo);
 	const Room& getCurRoomInfo();
-	void increasePraise();
+	void increasePraise();//增加点赞
 
 	void setUseable(bool bUseable);
 	void OnForceOffline();
 
 private:
-	void initSDK();	
-	void readConfig();
-	void saveConfig();
+	void initSDK();//初始化iLiveSDK
+	void readConfig();//读取配置信息
+	void saveConfig();//保存配置信息
 	void connectSignals();
-	void switchLoginState(E_LoginState state);
-	static void onForceOffline();
-	static void onUserSigExpired();
+	void switchLoginState(E_LoginState state);//改变登录状态
+	static void onForceOffline();//强制下线回调
+	static void onUserSigExpired();//用户Sig过期回调
 
 	void clearShowRoomList();
 	void updatePageNum();
@@ -94,28 +94,28 @@ private slots:
 private:
 	Ui::MainWindow		m_ui;
 	
-	QSettings*			m_pSetting;
-	int					m_nAppId;
-	QString				m_szServerUrl;
+	QSettings*			m_pSetting;//配置信息
+	int					m_nAppId;//App_ID
+	QString				m_szServerUrl;//服务器Url
 
-	E_LoginState		m_eLoginState;
+	E_LoginState		m_eLoginState;//当前登录状态 
 
-	QString				m_szUserId;
-	QString				m_szUserPassword;
-	QString				m_szUserSig;
+	QString				m_szUserId;//用户ID
+	QString				m_szUserPassword;//用户密码
+	QString				m_szUserSig;//用户Sig
 	QString				m_szUserToken;
 
-	Register*			m_pRegister;
-	Live*				m_pLive;
-	DeviceTest*			m_pDeviceTest;
+	Register*			m_pRegister;//注册窗口指针
+	Live*				m_pLive;//直播窗口指针
+	DeviceTest*			m_pDeviceTest;//设备测试窗口指针
 
-	int					m_nCurrentPage;
-	int					m_nTotalPage;
+	int					m_nCurrentPage;//当前页数
+	int					m_nTotalPage;//总页数
 
-	QVector<Room>		m_showRooms;
-	RoomListItem*		m_pRoomListItem[OnePageCout];
+	QVector<Room>		m_showRooms;//所有房间信息集合
+	RoomListItem*		m_pRoomListItem[OnePageCout];//所有直播房间集合
 
-	Room				m_curRoomInfo;
+	Room				m_curRoomInfo;//当前选择房间信息
 };
 
 #endif //MainWnd_h_

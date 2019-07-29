@@ -1,22 +1,20 @@
 #include "stdafx.h"
 #include "MainWindow.h"
 
-MainWindow::MainWindow( QWidget * parent /*= 0*/, Qt::WindowFlags flags /*= 0 */ )
+MainWindow::MainWindow(QWidget * parent /*= 0*/, Qt::WindowFlags flags /*= 0 */)
 {
 	m_ui.setupUi(this);
-	this->setWindowIcon( QIcon(":/res/Resources/logo.ico") );
+	this->setWindowIcon(QIcon(":/res/Resources/logo.ico"));
 
 	m_pSetting = new QSettings("config.ini", QSettings::IniFormat, this);
-	m_pLive = new Live(this, Qt::Dialog|Qt::WindowMinimizeButtonHint|Qt::WindowCloseButtonHint);
+	m_pLive = new Live(this, Qt::Dialog | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
 	m_pRegister = new Register(this);
 	m_pDeviceTest = new DeviceTest(this);
 
-	for(int i=0; i<OnePageCout; ++i)
+	for (int i = 0; i < OnePageCout; ++i)
 	{
-		int row = i<5?0:1;
-		int col = i%5;
 		m_pRoomListItem[i] = new RoomListItem(this);
-		m_ui.layoutShowRoomList->addWidget( m_pRoomListItem[i], row, col, 1, 1 );
+		m_ui.layoutShowRoomList->addWidget(m_pRoomListItem[i], i < 5 ? 0 : 1, i % 5, 1, 1);
 		m_pRoomListItem[i]->setVisible(false);
 	}
 
@@ -34,8 +32,7 @@ MainWindow::MainWindow( QWidget * parent /*= 0*/, Qt::WindowFlags flags /*= 0 */
 	initSDK();
 	connectSignals();
 
-	m_ui.lbVersion->setText(QString("iLiveSDK Version: ") + 
-		                    QString(GetILive()->getVersion()));
+	m_ui.lbVersion->setText(QString("iLiveSDK Version: ") + QString(GetILive()->getVersion()));
 }
 
 QString MainWindow::getUserId()
@@ -63,7 +60,7 @@ Live* MainWindow::getLiveView()
 	return m_pLive;
 }
 
-void MainWindow::setCurRoomIdfo( const Room& roominfo )
+void MainWindow::setCurRoomIdfo(const Room& roominfo)
 {
 	m_curRoomInfo = roominfo;
 }
@@ -78,7 +75,7 @@ void MainWindow::increasePraise()
 	m_curRoomInfo.info.thumbup++;
 }
 
-void MainWindow::setUseable( bool bUseable )
+void MainWindow::setUseable(bool bUseable)
 {
 	m_ui.groupBox->setEnabled(bUseable);
 	m_ui.tabWidget->setEnabled(bUseable);
@@ -91,55 +88,55 @@ void MainWindow::initSDK()
 	GetILive()->setUserSigExpiredCallback(onUserSigExpired);
 	GetILive()->setRemoteVideoCallBack(Live::OnRemoteVideo, m_pLive);
 	GetILive()->setChannelMode(E_ChannelIMSDK);
-	
+
 	iLiveRootView* pView = iLiveCreateRootView();
-	E_ColorFormat fmt = (pView->getRootViewType() ==ROOT_VIEW_TYPE_D3D) ? COLOR_FORMAT_I420 : COLOR_FORMAT_RGB24;
+	E_ColorFormat fmt = (pView->getRootViewType() == ROOT_VIEW_TYPE_D3D) ? COLOR_FORMAT_I420 : COLOR_FORMAT_RGB24;
 	GetILive()->setVideoColorFormat(fmt);//iLiveSDK目前的渲染模块，D3D只支持I420格式，GDI只支持RGB24格式;
 	pView->destroy();
-	
+
 	int nRet = GetILive()->init(m_nAppId);
 	if (nRet != NO_ERR)
 	{
-		ShowErrorTips( "init sdk failed.",this );
+		ShowErrorTips("init sdk failed.", this);
 		exit(0);
 	}
 }
 
 void MainWindow::readConfig()
-{	
-	if ( m_pSetting->contains("userId") )
+{
+	if (m_pSetting->contains("userId"))
 	{
-		m_ui.edUserName->setText( m_pSetting->value("userId").toString() );
+		m_ui.edUserName->setText(m_pSetting->value("userId").toString());
 	}
-	if ( m_pSetting->contains("userPwd") )
+	if (m_pSetting->contains("userPwd"))
 	{
-		m_ui.edPassword->setText( m_pSetting->value("userPwd").toString() );
+		m_ui.edPassword->setText(m_pSetting->value("userPwd").toString());
 	}
 }
 
 void MainWindow::saveConfig()
 {
-	m_pSetting->setValue( "userId", QVariant(m_szUserId) );
-	m_pSetting->setValue( "userPwd", QVariant(m_szUserPassword) );
+	m_pSetting->setValue("userId", QVariant(m_szUserId));
+	m_pSetting->setValue("userPwd", QVariant(m_szUserPassword));
 }
 
 void MainWindow::connectSignals()
 {
-	connect( m_ui.btnLogin, SIGNAL(clicked()), this, SLOT(onBtnLogin()) );
-	connect( m_ui.btnBeginLive, SIGNAL(clicked()), this, SLOT(onBtnBeginLive()) );
-	connect( m_ui.btnRegister, SIGNAL(clicked()), this, SLOT(onBtnRegister()) );
-	connect( m_ui.btnRefreshLiveList, SIGNAL(clicked()), this, SLOT(onBtnRefreshLiveList()) );
-	connect( m_ui.btnLastPage, SIGNAL(clicked()), this, SLOT(onBtnLastPage()) );
-	connect( m_ui.btnNextPage, SIGNAL(clicked()), this, SLOT(onBtnNextPage()) );
+	connect(m_ui.btnLogin, SIGNAL(clicked()), this, SLOT(onBtnLogin()));
+	connect(m_ui.btnBeginLive, SIGNAL(clicked()), this, SLOT(onBtnBeginLive()));
+	connect(m_ui.btnRegister, SIGNAL(clicked()), this, SLOT(onBtnRegister()));
+	connect(m_ui.btnRefreshLiveList, SIGNAL(clicked()), this, SLOT(onBtnRefreshLiveList()));
+	connect(m_ui.btnLastPage, SIGNAL(clicked()), this, SLOT(onBtnLastPage()));
+	connect(m_ui.btnNextPage, SIGNAL(clicked()), this, SLOT(onBtnNextPage()));
 }
 
-void MainWindow::switchLoginState( E_LoginState state )
+void MainWindow::switchLoginState(E_LoginState state)
 {
 	m_eLoginState = state;
 	switch (m_eLoginState)
 	{
 	case E_Logout:
-		m_ui.btnLogin->setText( QString::fromLocal8Bit("登录") );
+		m_ui.btnLogin->setText(QString::fromLocal8Bit("登录"));
 		m_ui.btnLogin->setEnabled(true);
 		m_ui.edUserName->setEnabled(true);
 		m_ui.edPassword->setEnabled(true);
@@ -147,14 +144,14 @@ void MainWindow::switchLoginState( E_LoginState state )
 		clearShowRoomList();
 		break;
 	case E_Logining:
-		m_ui.btnLogin->setText( QString::fromLocal8Bit("登录中...") );
+		m_ui.btnLogin->setText(QString::fromLocal8Bit("登录中..."));
 		m_ui.btnLogin->setEnabled(false);
 		m_ui.edUserName->setEnabled(false);
 		m_ui.edPassword->setEnabled(false);
 		m_ui.btnRegister->setEnabled(false);
 		break;
 	case E_Login:
-		m_ui.btnLogin->setText( QString::fromLocal8Bit("登出") );
+		m_ui.btnLogin->setText(QString::fromLocal8Bit("登出"));
 		m_ui.btnLogin->setEnabled(true);
 		m_ui.edUserName->setEnabled(false);
 		m_ui.edPassword->setEnabled(false);
@@ -167,14 +164,14 @@ void MainWindow::switchLoginState( E_LoginState state )
 
 void MainWindow::onForceOffline()
 {
-	ShowTips( FromBits("被踢下线"), FromBits("你的账号在其他地方登陆,点击确认后关闭!"), g_pMainWindow );
+	ShowTips(FromBits("被踢下线"), FromBits("你的账号在其他地方登陆,点击确认后关闭!"), g_pMainWindow);
 	g_pMainWindow->saveConfig();
 	TerminateProcess(GetCurrentProcess(), 0);
 }
 
 void MainWindow::onUserSigExpired()
 {
-	ShowTips( FromBits("被踢下线"), FromBits("你的账号sig过期,点击确认后关闭!"), g_pMainWindow );
+	ShowTips(FromBits("被踢下线"), FromBits("你的账号sig过期,点击确认后关闭!"), g_pMainWindow);
 	g_pMainWindow->saveConfig();
 	TerminateProcess(GetCurrentProcess(), 0);
 }
@@ -192,11 +189,11 @@ void MainWindow::clearShowRoomList()
 void MainWindow::updatePageNum()
 {
 	QString szPageText;
-	int nShowPage = m_nTotalPage>0?m_nCurrentPage+1:0;
-	szPageText.sprintf( "%d/%d", nShowPage, m_nTotalPage );
+	int nShowPage = m_nTotalPage > 0 ? m_nCurrentPage + 1 : 0;
+	szPageText.sprintf("%d/%d", nShowPage, m_nTotalPage);
 	m_ui.lbPageNum->setText(szPageText);
 
-	if (m_nCurrentPage==0)
+	if (m_nCurrentPage == 0)
 	{
 		m_ui.btnLastPage->setEnabled(false);
 	}
@@ -204,8 +201,8 @@ void MainWindow::updatePageNum()
 	{
 		m_ui.btnLastPage->setEnabled(true);
 	}
-	
-	if (m_nCurrentPage >= m_nTotalPage-1)
+
+	if (m_nCurrentPage >= m_nTotalPage - 1)
 	{
 		m_ui.btnNextPage->setEnabled(false);
 	}
@@ -217,9 +214,9 @@ void MainWindow::updatePageNum()
 
 void MainWindow::updateRoomList()
 {
-	for (int i=0; i<OnePageCout; ++i)
+	for (int i = 0; i < OnePageCout; ++i)
 	{
-		if (i<m_showRooms.size())
+		if (i < m_showRooms.size())
 		{
 			m_pRoomListItem[i]->setRoomParam(m_showRooms[i]);
 			m_pRoomListItem[i]->setVisible(true);
@@ -253,39 +250,39 @@ void MainWindow::sxbLogout()
 void MainWindow::sxbCreateRoom()
 {
 	QVariantMap varmap;
-	varmap.insert("token",m_szUserToken);
-	varmap.insert("type","live");
+	varmap.insert("token", m_szUserToken);
+	varmap.insert("type", "live");
 	SxbServerHelper::request(varmap, "live", "create", OnSxbCreateRoom, this);
 }
 
 void MainWindow::sxbReportroom()
 {
 	QVariantMap varmap;
-	
+
 	varmap.insert("token", m_szUserToken);
-	
+
 	QVariantMap roommap;
-	roommap.insert( "title", m_curRoomInfo.info.title );//选填
-	roommap.insert( "roomnum", m_curRoomInfo.info.roomnum );
-	roommap.insert( "type", "live");
-	roommap.insert( "groupid", QString::number(m_curRoomInfo.info.roomnum) );
-	roommap.insert( "cover", "");//选填
-	roommap.insert( "appid", QString::number(m_nAppId) );
-	roommap.insert( "device", 2);//0 IOS 1 Android 2 PC
-	roommap.insert( "videotype", 0);//0 摄像头 1 屏幕分享
+	roommap.insert("title", m_curRoomInfo.info.title);//选填
+	roommap.insert("roomnum", m_curRoomInfo.info.roomnum);
+	roommap.insert("type", "live");
+	roommap.insert("groupid", QString::number(m_curRoomInfo.info.roomnum));
+	roommap.insert("cover", "");//选填
+	roommap.insert("appid", QString::number(m_nAppId));
+	roommap.insert("device", 2);//0 IOS 1 Android 2 PC
+	roommap.insert("videotype", 0);//0 摄像头 1 屏幕分享
 	varmap.insert("room", roommap);
-	
+
 	SxbServerHelper::request(varmap, "live", "reportroom", OnSxbReportroom, this);
 }
 
 void MainWindow::sxbCreatorJoinRoom()
 {
 	QVariantMap varmap;
-	varmap.insert( "token", m_szUserToken );
-	varmap.insert( "id", m_szUserId );
-	varmap.insert( "roomnum", m_curRoomInfo.info.roomnum );
-	varmap.insert( "role", 1 );//主播 1 成员 0 上麦成员 2
-	varmap.insert( "operate", 0);//进入房间0  退出房间1
+	varmap.insert("token", m_szUserToken);
+	varmap.insert("id", m_szUserId);
+	varmap.insert("roomnum", m_curRoomInfo.info.roomnum);
+	varmap.insert("role", 1);//主播 1 成员 0 上麦成员 2
+	varmap.insert("operate", 0);//进入房间0  退出房间1
 	SxbServerHelper::request(varmap, "live", "reportmemid", OnSxbCreatorJoinRoom, this);
 }
 
@@ -300,7 +297,7 @@ void MainWindow::sxbRoomList()
 	SxbServerHelper::request(varmap, "live", "roomlist", OnSxbRoomList, this);
 }
 
-void MainWindow::OnSxbLogin( int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData )
+void MainWindow::OnSxbLogin(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData)
 {
 	MainWindow* pMainWindow = reinterpret_cast<MainWindow*>(pCusData);
 
@@ -312,34 +309,34 @@ void MainWindow::OnSxbLogin( int errorCode, QString errorInfo, QVariantMap datam
 	{
 		pMainWindow->m_szUserToken = datamap.value("token").toString();
 	}
-	
-	if (errorCode==E_SxbOK)
+
+	if (errorCode == E_SxbOK)
 	{
 		pMainWindow->iLiveLogin();
 	}
 	else
 	{
 		pMainWindow->switchLoginState(E_Logout);
-		ShowCodeErrorTips( errorCode, errorInfo, pMainWindow, FromBits("登录服务器出错") );
+		ShowCodeErrorTips(errorCode, errorInfo, pMainWindow, FromBits("登录服务器出错"));
 	}
 }
 
-void MainWindow::OnSxbLogout( int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData )
+void MainWindow::OnSxbLogout(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData)
 {
 	MainWindow* pMainWindow = reinterpret_cast<MainWindow*>(pCusData);
 
-	if (errorCode==E_SxbOK)
+	if (errorCode == E_SxbOK)
 	{
 		pMainWindow->iLiveLogout();
 	}
 	else
 	{
 		pMainWindow->switchLoginState(E_Login);
-		ShowCodeErrorTips( errorCode, errorInfo, pMainWindow, FromBits("登出服务器出错") );
+		ShowCodeErrorTips(errorCode, errorInfo, pMainWindow, FromBits("登出服务器出错"));
 	}
 }
 
-void MainWindow::OnSxbCreateRoom( int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData )
+void MainWindow::OnSxbCreateRoom(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData)
 {
 	MainWindow* pMainWindow = reinterpret_cast<MainWindow*>(pCusData);
 
@@ -353,50 +350,50 @@ void MainWindow::OnSxbCreateRoom( int errorCode, QString errorInfo, QVariantMap 
 		assert(QString::number(pMainWindow->m_curRoomInfo.info.roomnum) == szRoomId);
 	}
 
-	if (errorCode==E_SxbOK)
+	if (errorCode == E_SxbOK)
 	{
 		pMainWindow->iLiveCreateRoom();
 	}
 	else
 	{
-		ShowCodeErrorTips( errorCode, errorInfo, pMainWindow, FromBits("创建房间出错") );
+		ShowCodeErrorTips(errorCode, errorInfo, pMainWindow, FromBits("创建房间出错"));
 		pMainWindow->setUseable(true);
 	}
 }
 
-void MainWindow::OnSxbReportroom( int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData )
+void MainWindow::OnSxbReportroom(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData)
 {
 	MainWindow* pMainWindow = reinterpret_cast<MainWindow*>(pCusData);
 
-	if (errorCode==E_SxbOK)
+	if (errorCode == E_SxbOK)
 	{
 		pMainWindow->sxbCreatorJoinRoom();//随心播服务器要求，创建房间、上报房间信息、主播还需要上报一次自己进入房间;
 	}
 	else
 	{
-		ShowCodeErrorTips( errorCode, errorInfo, pMainWindow, FromBits("上报房间失败") );
+		ShowCodeErrorTips(errorCode, errorInfo, pMainWindow, FromBits("上报房间失败"));
 	}
 }
 
-void MainWindow::OnSxbCreatorJoinRoom( int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData )
+void MainWindow::OnSxbCreatorJoinRoom(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData)
 {
 	MainWindow* pMainWindow = reinterpret_cast<MainWindow*>(pCusData);
 
-	if (errorCode==E_SxbOK)
+	if (errorCode == E_SxbOK)
 	{
 		pMainWindow->m_pLive->StartTimer();//启动计时器
 	}
 	else
 	{
-		ShowCodeErrorTips( errorCode, errorInfo, pMainWindow, FromBits("主播创建房间失败") );
+		ShowCodeErrorTips(errorCode, errorInfo, pMainWindow, FromBits("主播创建房间失败"));
 	}
 }
 
-void MainWindow::OnSxbRoomList( int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData )
+void MainWindow::OnSxbRoomList(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData)
 {
 	MainWindow* pMainWindow = reinterpret_cast<MainWindow*>(pCusData);
 
-	if (errorCode!=E_SxbOK)
+	if (errorCode != E_SxbOK)
 	{
 		//iLiveLog_e("suixinbo", "SxbRoomList Failed.");
 		return;
@@ -405,7 +402,7 @@ void MainWindow::OnSxbRoomList( int errorCode, QString errorInfo, QVariantMap da
 	if (datamap.contains("total"))
 	{
 		int nTotal = datamap.value("total").toInt();
-		pMainWindow->m_nTotalPage = nTotal/OnePageCout;
+		pMainWindow->m_nTotalPage = nTotal / OnePageCout;
 		if (nTotal%OnePageCout != 0)
 		{
 			pMainWindow->m_nTotalPage += 1;
@@ -417,8 +414,8 @@ void MainWindow::OnSxbRoomList( int errorCode, QString errorInfo, QVariantMap da
 	{
 		QVariantList roomslist = datamap.value("rooms").toList();
 		QVector<Room>& showRooms = pMainWindow->m_showRooms;
-		showRooms.clear();			
-		for (int i=0; i<roomslist.size(); ++i)
+		showRooms.clear();
+		for (int i = 0; i < roomslist.size(); ++i)
 		{
 			QVariantMap roommap = roomslist[i].toMap();
 			Room theroom;
@@ -449,9 +446,9 @@ void MainWindow::OnSxbRoomList( int errorCode, QString errorInfo, QVariantMap da
 				if (infomap.contains("cover"))
 				{
 					theroom.info.cover = infomap.value("cover").toString();
-					if ( !theroom.info.cover.isEmpty() )
+					if (!theroom.info.cover.isEmpty())
 					{
-						pMainWindow->picDown( getFileNameByUrl(theroom.info.cover), theroom.info.cover );
+						pMainWindow->picDown(getFileNameByUrl(theroom.info.cover), theroom.info.cover);
 					}
 				}
 				if (infomap.contains("thumbup"))
@@ -469,22 +466,22 @@ void MainWindow::OnSxbRoomList( int errorCode, QString errorInfo, QVariantMap da
 	}
 }
 
-void MainWindow::picDown( QString userId, QString url )
+void MainWindow::picDown(QString userId, QString url)
 {
-	PicDownHelper::getPic(url, userId+".jpg", OnPicDown, this);
+	PicDownHelper::getPic(url, userId + ".jpg", OnPicDown, this);
 }
 
-void MainWindow::OnPicDown( int errorCode, QString errorInfo, QString picPath, void* pCusData )
+void MainWindow::OnPicDown(int errorCode, QString errorInfo, QString picPath, void* pCusData)
 {
 	MainWindow* pMainWindow = reinterpret_cast<MainWindow*>(pCusData);
 
-	if (errorCode==E_PicDownOK)
+	if (errorCode == E_PicDownOK)
 	{
 		pMainWindow->updateRoomList();
 	}
 	else
 	{
-		ShowCodeErrorTips(errorCode, errorInfo, pMainWindow );
+		ShowCodeErrorTips(errorCode, errorInfo, pMainWindow);
 	}
 }
 
@@ -512,10 +509,10 @@ void MainWindow::iLiveCreateRoom()
 	roomOption.memberStatusListener = Live::OnMemStatusChange;
 	//roomOption.qualityParamCallback = Live::OnQualityParamCallback;
 	roomOption.data = m_pLive;
-	GetILive()->createRoom( roomOption, OniLiveCreateRoomSuc, OniLiveCreateRoomErr, this );
+	GetILive()->createRoom(roomOption, OniLiveCreateRoomSuc, OniLiveCreateRoomErr, this);
 }
 
-void MainWindow::OniLiveLoginSuccess( void* data )
+void MainWindow::OniLiveLoginSuccess(void* data)
 {
 	MainWindow* pThis = reinterpret_cast<MainWindow*>(data);
 	pThis->switchLoginState(E_Login);
@@ -524,27 +521,27 @@ void MainWindow::OniLiveLoginSuccess( void* data )
 	//GetILive()->setWaterMark("waterMark.png", 0.2f, 0.2f, 0.4f);
 }
 
-void MainWindow::OniLiveLoginError( int code, const char *desc, void* data )
+void MainWindow::OniLiveLoginError(int code, const char *desc, void* data)
 {
 	MainWindow* pThis = reinterpret_cast<MainWindow*>(data);
 	pThis->switchLoginState(E_Logout);
-	ShowCodeErrorTips(code, desc , pThis, "iLive Login Error");
+	ShowCodeErrorTips(code, desc, pThis, "iLive Login Error");
 }
 
-void MainWindow::OniLiveLogoutSuccess( void* data )
+void MainWindow::OniLiveLogoutSuccess(void* data)
 {
 	MainWindow* pThis = reinterpret_cast<MainWindow*>(data);
 	pThis->switchLoginState(E_Logout);
 }
 
-void MainWindow::OniLiveLogoutError( int code, const char *desc, void* data )
+void MainWindow::OniLiveLogoutError(int code, const char *desc, void* data)
 {
 	MainWindow* pThis = reinterpret_cast<MainWindow*>(data);
 	pThis->switchLoginState(E_Login);
 	ShowCodeErrorTips(code, desc, pThis, "iLive Logout Error");
 }
 
-void MainWindow::OniLiveCreateRoomSuc( void* data )
+void MainWindow::OniLiveCreateRoomSuc(void* data)
 {
 	MainWindow* pThis = reinterpret_cast<MainWindow*>(data);
 	pThis->m_pLive->setRoomID(pThis->m_curRoomInfo.info.roomnum);
@@ -555,14 +552,14 @@ void MainWindow::OniLiveCreateRoomSuc( void* data )
 	pThis->sxbReportroom();//上报房间信息给随心播业务侧服务器
 }
 
-void MainWindow::OniLiveCreateRoomErr( int code, const char *desc, void* data )
+void MainWindow::OniLiveCreateRoomErr(int code, const char *desc, void* data)
 {
 	MainWindow* pThis = reinterpret_cast<MainWindow*>(data);
 	ShowCodeErrorTips(code, desc, pThis, "Create iLive Room Error.");
 	pThis->setUseable(true);
 }
 
-void MainWindow::OnStartDeviceTestSuc( void* data )
+void MainWindow::OnStartDeviceTestSuc(void* data)
 {
 	GetILive()->setDeviceOperationCallback(DeviceTest::OnDeviceOperation, g_pMainWindow->m_pDeviceTest);
 	GetILive()->setLocalVideoCallBack(DeviceTest::OnCameraVideo, g_pMainWindow->m_pDeviceTest);
@@ -570,17 +567,17 @@ void MainWindow::OnStartDeviceTestSuc( void* data )
 	g_pMainWindow->m_pDeviceTest->show();
 }
 
-void MainWindow::OnStartDeviceTestErr( int code, const char *desc, void* data )
+void MainWindow::OnStartDeviceTestErr(int code, const char *desc, void* data)
 {
 	ShowCodeErrorTips(code, desc, g_pMainWindow);
 }
 
-void MainWindow::closeEvent( QCloseEvent* event )
+void MainWindow::closeEvent(QCloseEvent* event)
 {
-	if(m_pLive->isVisible())
+	if (m_pLive->isVisible())
 	{
 		event->ignore();//阻止窗口关闭
-		QMessageBox::warning( this, "Tips", FromBits("请先退出直播间") );
+		QMessageBox::warning(this, "Tips", FromBits("请先退出直播间"));
 	}
 	else
 	{
@@ -624,7 +621,7 @@ void MainWindow::onBtnBeginLive()
 {
 	if (m_eLoginState != E_Login)
 	{
-		ShowErrorTips( FromBits("请先登录"), this );
+		ShowErrorTips(FromBits("请先登录"), this);
 		return;
 	}
 	m_curRoomInfo.info.title = m_ui.edBLTitle->text();
@@ -634,9 +631,9 @@ void MainWindow::onBtnBeginLive()
 
 void MainWindow::onBtnRefreshLiveList()
 {
-	if (m_eLoginState!= E_Login)
+	if (m_eLoginState != E_Login)
 	{
-		ShowErrorTips( FromBits("请先登录"), this );
+		ShowErrorTips(FromBits("请先登录"), this);
 		return;
 	}
 
@@ -646,9 +643,9 @@ void MainWindow::onBtnRefreshLiveList()
 
 void MainWindow::onBtnLastPage()
 {
-	if (m_eLoginState!= E_Login)
+	if (m_eLoginState != E_Login)
 	{
-		ShowErrorTips( FromBits("请先登录"), this );
+		ShowErrorTips(FromBits("请先登录"), this);
 		return;
 	}
 
@@ -658,9 +655,9 @@ void MainWindow::onBtnLastPage()
 
 void MainWindow::onBtnNextPage()
 {
-	if (m_eLoginState!= E_Login)
+	if (m_eLoginState != E_Login)
 	{
-		ShowErrorTips( FromBits("请先登录"), this );
+		ShowErrorTips(FromBits("请先登录"), this);
 		return;
 	}
 
