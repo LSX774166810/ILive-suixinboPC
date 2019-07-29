@@ -81,10 +81,10 @@ namespace ilive
 	*/
 	enum E_MessageElemType
 	{
-		TEXT,
-		CUSTOM,
-		IMAGE,
-		FACE,
+		TEXT,//文字
+		CUSTOM,//自定义
+		IMAGE,//图片
+		FACE,//表情
 	};
 
 	/**
@@ -516,7 +516,7 @@ namespace ilive
 	*/
 	struct MessageElem
 	{
-		E_MessageElemType type;
+		E_MessageElemType type;//消息类型
 		MessageElem(){}
 		MessageElem(const MessageElem& oth):type(oth.type){}
 		virtual ~MessageElem() {}

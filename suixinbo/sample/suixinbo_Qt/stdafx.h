@@ -64,8 +64,15 @@ enum E_CustomCmd
 	AVIMCMD_Multi_Interact_Refuse,      // 多人互动方收到AVIMCMD_Multi_Invite多人邀请后，拒绝，C2C消息 ： 2052
 };
 /////////////////////////随心播信令End///////////////////////////////
-
+//发送C2C指令
+//dstUser:指令接受用户
+//userAction:用户操作
+//actionParam:操作参数
 void g_sendC2CCustomCmd( QString dstUser, E_CustomCmd userAction, QString actionParam, iLiveSucCallback suc = NULL, iLiveErrCallback err = NULL, void* data = NULL );
+
+//发送群消息
+//userAction：用户操作
+//actionParam：操作参数
 void g_sendGroupCustomCmd( E_CustomCmd userAction, QString actionParam, iLiveSucCallback suc = NULL, iLiveErrCallback err = NULL, void* data = NULL );
 
 #endif//stdafx_h_

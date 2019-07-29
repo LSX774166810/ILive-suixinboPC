@@ -128,6 +128,7 @@ void Live::setRoomID( int roomID )
 void Live::setRoomUserType( E_RoomUserType userType )
 {
 	m_userType = userType;
+
 	m_ui.SkinGB->setVisible(false);
 	updateMsgs();
 	updateCameraGB();
@@ -138,6 +139,7 @@ void Live::setRoomUserType( E_RoomUserType userType )
 	updateSystemVoiceInputGB();
 	updateMediaFilePlayGB();
 	updatePushStreamGB();
+
 	switch(m_userType)
 	{
 	case E_RoomUserCreator:
@@ -1995,20 +1997,20 @@ void Live::on_btnMix_clicked()
 {
 	std::vector<std::pair<std::string, bool>> list;
 
-	//aux
+	//aux辅路视频
 	if ( (m_pScreenShareRender != nullptr) && (!m_pScreenShareRender->getIdentifier().empty()) )
 	{
 		std::pair<std::string, bool> id(m_pScreenShareRender->getIdentifier().c_str(), true);		
 		list.push_back(id);
 	}
-	//local camera
+	//local camera本地画面
 	if ( (m_pLocalCameraRender != nullptr) && (!m_pLocalCameraRender->getIdentifier().empty()) )
 	{
 		std::pair<std::string, bool> id(m_pLocalCameraRender->getIdentifier().c_str(), false);		
 		list.push_back(id);
 	}
 
-	//remote camera
+	//remote camera远程画面
 	for (sizet i = 0; i < m_pRemoteVideoRenders.size(); ++i)
 	{
 		if ( m_pRemoteVideoRenders[i]->isFree() ) continue;

@@ -27,7 +27,7 @@ private:
 
 private:
 	iLiveRootView*	m_pRootView;//渲染器
-	String			m_identifier;
+	String			m_identifier;//渲染器识别码 ID
 	bool			m_bFree;//渲染器是否可用
 	uint32			m_bgColor;//背景颜色
 
