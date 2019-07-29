@@ -11,7 +11,7 @@ enum E_SxbServerRelpy
 
 typedef void (*SxbRecFun)(int errorCode, QString errorInfo, QVariantMap datamap, void* pCusData);
 
-//获取Json信息
+//获取sxb服务器回复信息
 class SxbServerHelper
 {
 public:

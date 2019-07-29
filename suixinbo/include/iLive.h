@@ -14,27 +14,27 @@ namespace ilive
 	*/
 	enum E_iLiveError
 	{
-		INVALID_INTETER_VALUE   = -1,   ///< 无效的整型返回值(通用)
-		NO_ERR                  = 0,    ///< 成功
-		ERR_IM_NOT_READY        = 8001, ///< IM模块未就绪或未加载
-		ERR_AV_NOT_READY        = 8002, ///< AV模块未就绪或未加载
-		ERR_NO_ROOM             = 8003, ///< 无有效的房间
-		ERR_ALREADY_EXIST       = 8004, ///< 目标已存在
-		ERR_NULL_POINTER        = 8005, ///< 空指针错误
-		ERR_ENTER_AV_ROOM_FAIL  = 8006, ///< 进入AV房间失败
-		ERR_USER_CANCEL         = 8007, ///< 用户取消
-		ERR_WRONG_STATE         = 8008, ///< 状态异常
-		ERR_NOT_LOGIN			= 8009, ///< 未登录
-		ERR_ALREADY_IN_ROOM		= 8010, ///< 已在房间中
-		ERR_BUSY_HERE			= 8011,	///< 内部忙(上一请求未完成)
-		ERR_NET_UNDEFINE		= 8012, ///< 网络未识别或网络不可达
-		ERR_SDK_FAILED          = 8020, ///< iLiveSDK处理失败(通用)
-		ERR_INVALID_PARAM       = 8021, ///< 无效的参数
-		ERR_NOT_FOUND           = 8022, ///< 无法找到目标
-		ERR_NOT_SUPPORT         = 8023, ///< 请求不支持
-		ERR_ALREADY_STATE       = 8024, ///< 状态已到位(一般为重复调用引起)
-		ERR_KICK_OUT            = 8050, ///< 被踢下线
-		ERR_EXPIRE              = 8051, ///< 票据过期(需更新票据userSig)
+		INVALID_INTETER_VALUE   = -1,   //无效的整型返回值(通用)
+		NO_ERR                  = 0,    //成功
+		ERR_IM_NOT_READY        = 8001, //IM模块未就绪或未加载
+		ERR_AV_NOT_READY        = 8002, //AV模块未就绪或未加载
+		ERR_NO_ROOM             = 8003, //无有效的房间
+		ERR_ALREADY_EXIST       = 8004, //目标已存在
+		ERR_NULL_POINTER        = 8005, //空指针错误
+		ERR_ENTER_AV_ROOM_FAIL  = 8006, //进入AV房间失败
+		ERR_USER_CANCEL         = 8007, //用户取消
+		ERR_WRONG_STATE         = 8008, //状态异常
+		ERR_NOT_LOGIN			= 8009, //未登录
+		ERR_ALREADY_IN_ROOM		= 8010, //已在房间中
+		ERR_BUSY_HERE			= 8011,	//内部忙(上一请求未完成)
+		ERR_NET_UNDEFINE		= 8012, //网络未识别或网络不可达
+		ERR_SDK_FAILED          = 8020, //iLiveSDK处理失败(通用)
+		ERR_INVALID_PARAM       = 8021, //无效的参数
+		ERR_NOT_FOUND           = 8022, //无法找到目标
+		ERR_NOT_SUPPORT         = 8023, //请求不支持
+		ERR_ALREADY_STATE       = 8024, //状态已到位(一般为重复调用引起)
+		ERR_KICK_OUT            = 8050, //被踢下线
+		ERR_EXPIRE              = 8051, //票据过期(需更新票据userSig)
 	};
 
 	/**
@@ -42,17 +42,17 @@ namespace ilive
 	*/
 	enum E_EndpointEventId
 	{
-		EVENT_ID_NONE = 0,						///< 无
-		EVENT_ID_ENDPOINT_ENTER = 1,			///< 进入房间事件
-		EVENT_ID_ENDPOINT_EXIT = 2,				///< 退出房间事件
-		EVENT_ID_ENDPOINT_HAS_CAMERA_VIDEO = 3, ///< 有发摄像头视频事件
-		EVENT_ID_ENDPOINT_NO_CAMERA_VIDEO = 4,	///< 无发摄像头视频事件
-		EVENT_ID_ENDPOINT_HAS_AUDIO = 5,		///< 有发音频事件
-		EVENT_ID_ENDPOINT_NO_AUDIO = 6,			///< 无发音频事件
-		EVENT_ID_ENDPOINT_HAS_SCREEN_VIDEO = 7, ///< 有发屏幕视频事件
-		EVENT_ID_ENDPOINT_NO_SCREEN_VIDEO = 8,	///< 无发屏幕视频事件
-		EVENT_ID_ENDPOINT_HAS_MEDIA_VIDEO = 9,	///< 有播放视频事件
-		EVENT_ID_ENDPOINT_NO_MEDIA_VIDEO = 10,	///< 无播放视频事件
+		EVENT_ID_NONE = 0,						//无
+		EVENT_ID_ENDPOINT_ENTER = 1,			//进入房间事件
+		EVENT_ID_ENDPOINT_EXIT = 2,				//退出房间事件
+		EVENT_ID_ENDPOINT_HAS_CAMERA_VIDEO = 3, //有发摄像头视频事件
+		EVENT_ID_ENDPOINT_NO_CAMERA_VIDEO = 4,	//无发摄像头视频事件
+		EVENT_ID_ENDPOINT_HAS_AUDIO = 5,		//有发音频事件
+		EVENT_ID_ENDPOINT_NO_AUDIO = 6,			//无发音频事件
+		EVENT_ID_ENDPOINT_HAS_SCREEN_VIDEO = 7, //有发屏幕视频事件
+		EVENT_ID_ENDPOINT_NO_SCREEN_VIDEO = 8,	//无发屏幕视频事件
+		EVENT_ID_ENDPOINT_HAS_MEDIA_VIDEO = 9,	//有播放视频事件
+		EVENT_ID_ENDPOINT_NO_MEDIA_VIDEO = 10,	//无播放视频事件
 	};
 
 	/**
@@ -60,9 +60,9 @@ namespace ilive
 	*/
 	enum E_AudioCategory
 	{
-		AUDIO_CATEGORY_VOICECHAT = 0,				///< VoIP模式。适合于实时音频通信场景，如实时语音通话
-		AUDIO_CATEGORY_MEDIA_PLAY_AND_RECORD = 1,	///< 媒体采集与播放模式。适合于那些对音质要求比较高的直播场景，如主播场景中的主播人员
-		AUDIO_CATEGORY_MEDIA_PLAYBACK = 2,			///< 媒体播放模式。适合于那些对音质要求比较高的直播场景，如主播场景中的听众
+		AUDIO_CATEGORY_VOICECHAT = 0,				//VoIP模式。适合于实时音频通信场景，如实时语音通话
+		AUDIO_CATEGORY_MEDIA_PLAY_AND_RECORD = 1,	//媒体采集与播放模式。适合于那些对音质要求比较高的直播场景，如主播场景中的主播人员
+		AUDIO_CATEGORY_MEDIA_PLAYBACK = 2,			//媒体播放模式。适合于那些对音质要求比较高的直播场景，如主播场景中的听众
 	};
 
 	/**
@@ -102,11 +102,11 @@ namespace ilive
 	*/
 	enum E_iLiveStreamEncode
 	{
-		HLS = 0x01,			///< 请求HLS编码的视频流URL
-		FLV = 0x02,			///< 请求FLV编码的视频流URL
-		RAW = 0x04,			///< RAW码流
-		RTMP = 0x05,		///< RTMP
-		HLS_AND_RTMP = 0x06,///< HLS AND RTMP
+		HLS = 0x01,			//请求HLS编码的视频流URL
+		FLV = 0x02,			//请求FLV编码的视频流URL
+		RAW = 0x04,			//RAW码流
+		RTMP = 0x05,		//RTMP
+		HLS_AND_RTMP = 0x06,//HLS AND RTMP
 	};
 
 	/**
@@ -114,8 +114,8 @@ namespace ilive
 	*/
 	enum E_RecordDataType
 	{
-		E_RecordCamera = 0, ///< 录制摄像头
-		E_RecordScreen,		///< 录制辅流(屏幕分享/文件播放)
+		E_RecordCamera = 0, //录制摄像头
+		E_RecordScreen,		//录制辅流(屏幕分享/文件播放)
 	};
 
 	/**
@@ -139,8 +139,8 @@ namespace ilive
 	*/
 	enum E_PushDataType
 	{
-		E_PushCamera = 0,///< 摄像头
-		E_PushScreen,	 ///< 辅流(屏幕分享/文件播放)
+		E_PushCamera = 0,//摄像头
+		E_PushScreen,	 //辅流(屏幕分享/文件播放)
 	};
 
 	/**
@@ -148,9 +148,9 @@ namespace ilive
 	*/
 	enum E_RateType
 	{
-		RATE_TYPE_ORIGINAL = 0,	///< 原始码率
-		RATE_TYPE_550 = 10,		///< 标清码率550K
-		RATE_TYPE_900 = 20,		///< 高清码率900K
+		RATE_TYPE_ORIGINAL = 0,	//原始码率
+		RATE_TYPE_550 = 10,		//标清码率550K
+		RATE_TYPE_900 = 20,		//高清码率900K
 	};
 
 	/**
@@ -158,12 +158,12 @@ namespace ilive
 	*/
 	enum E_ColorFormat
 	{
-		COLOR_FORMAT_NONE = -1,		///< 无意义
-		COLOR_FORMAT_I420 = 0,		///< i420格式
+		COLOR_FORMAT_NONE = -1,		//无意义
+		COLOR_FORMAT_I420 = 0,		//i420格式
 		COLOR_FORMAT_NV21 = 1,
 		COLOR_FORMAT_NV12 = 3,
 		COLOR_FORMAT_RGB16 = 7,
-		COLOR_FORMAT_RGB24 = 8,		///< rgb24格式(实际内存中存放方式是BGR888)
+		COLOR_FORMAT_RGB24 = 8,		//rgb24格式(实际内存中存放方式是BGR888)
 		COLOR_FORMAT_RGB32 = 9,
 		COLOR_FORMAT_RGBA  = 10,
 		COLOR_FORMAT_ABGR  = 11,
@@ -176,9 +176,9 @@ namespace ilive
 	*/
 	enum E_ScreenShareState
 	{
-		E_ScreenShareNone,	///< 未开启屏幕分享
-		E_ScreenShareWnd,	///< 开启了指定窗口的共享
-		E_ScreenShareArea,	///< 开启了指定区域的共享
+		E_ScreenShareNone,	//未开启屏幕分享
+		E_ScreenShareWnd,	//开启了指定窗口的共享
+		E_ScreenShareArea,	//开启了指定区域的共享
 	};
 
 	/**
@@ -186,9 +186,9 @@ namespace ilive
 	*/
 	enum E_PlayMediaFileState
 	{
-		E_PlayMediaFileStop,	///< 停止播放
-		E_PlayMediaFilePlaying,	///< 播放中
-		E_PlayMediaFilePause,	///< 暂停中
+		E_PlayMediaFileStop,	//停止播放
+		E_PlayMediaFilePlaying,	//播放中
+		E_PlayMediaFilePause,	//暂停中
 	};
 
 	/**
@@ -197,10 +197,10 @@ namespace ilive
 	*/
 	enum E_VideoSrc
 	{
-		VIDEO_SRC_TYPE_NONE = 0,	///< 默认值，无意义
-		VIDEO_SRC_TYPE_CAMERA = 1,	///< 摄像头
-		VIDEO_SRC_TYPE_SCREEN = 2,	///< 屏幕
-		VIDEO_SRC_TYPE_MEDIA = 3,	///< 播片
+		VIDEO_SRC_TYPE_NONE = 0,	//默认值，无意义
+		VIDEO_SRC_TYPE_CAMERA = 1,	//摄像头
+		VIDEO_SRC_TYPE_SCREEN = 2,	//屏幕
+		VIDEO_SRC_TYPE_MEDIA = 3,	//播片
 	};
 
 	/**
@@ -208,23 +208,23 @@ namespace ilive
 	*/
 	enum E_DeviceOperationType
 	{
-		E_DeviceOperationNone,		///< 默认值，无意义
-		E_OpenCamera,				///< 打开摄像头
-		E_CloseCamera,				///< 关闭摄像头
-		E_OpenExternalCapture,		///< 打开主路自定义采集
-		E_CloseExternalCapture,		///< 关闭主路自定义采集
-		E_OpenExternalCaptureSub,	///< 打开辅路自定义采集
-		E_CloseExternalCaptureSub,	///< 关闭辅路自定义采集
-		E_OpenMic,					///< 打开麦克风
-		E_CloseMic,					///< 关闭麦克风
-		E_OpenPlayer,				///< 打开扬声器
-		E_ClosePlayer,				///< 关闭扬声器
-		E_OpenScreenShare,			///< 打开屏幕分享
-		E_CloseScreenShare,			///< 关闭屏幕分享
-		E_OpenSystemVoiceInput,		///< 打开系统声音采集
-		E_CloseSystemVoiceInput,	///< 关闭系统声音采集
-		E_OpenPlayMediaFile,		///< 打开文件播放
-		E_ClosePlayMediaFile,		///< 关闭文件播放
+		E_DeviceOperationNone,		//默认值，无意义
+		E_OpenCamera,				//打开摄像头
+		E_CloseCamera,				//关闭摄像头
+		E_OpenExternalCapture,		//打开主路自定义采集
+		E_CloseExternalCapture,		//关闭主路自定义采集
+		E_OpenExternalCaptureSub,	//打开辅路自定义采集
+		E_CloseExternalCaptureSub,	//关闭辅路自定义采集
+		E_OpenMic,					//打开麦克风
+		E_CloseMic,					//关闭麦克风
+		E_OpenPlayer,				//打开扬声器
+		E_ClosePlayer,				//关闭扬声器
+		E_OpenScreenShare,			//打开屏幕分享
+		E_CloseScreenShare,			//关闭屏幕分享
+		E_OpenSystemVoiceInput,		//打开系统声音采集
+		E_CloseSystemVoiceInput,	//关闭系统声音采集
+		E_OpenPlayMediaFile,		//打开文件播放
+		E_ClosePlayMediaFile,		//关闭文件播放
 	};
 
 	/**
@@ -234,14 +234,14 @@ namespace ilive
 	enum E_WaterMarkType
 	{
 		WATER_MARK_TYPE_NONE        = 0,
-		WATER_MARK_TYPE_320_240     = 1, ///< 针对编码分辨率为320*240的视频设置水印。
-		WATER_MARK_TYPE_480_360     = 2, ///< 针对编码分辨率为480*360的视频设置水印。
-		WATER_MARK_TYPE_640_480     = 3, ///< 针对编码分辨率为640*480的视频设置水印。
-		WATER_MARK_TYPE_640_368     = 4, ///< 针对编码分辨率为640*368的视频设置水印。
-		WATER_MARK_TYPE_960_540     = 5, ///< 针对编码分辨率为960*540的视频设置水印。
-		WATER_MARK_TYPE_1280_720    = 6, ///< 针对编码分辨率为1280*720的视频设置水印。
-		WATER_MARK_TYPE_192_144     = 7, ///< 针对编码分辨率为192*144的视频设置水印。
-		WATER_MARK_TYPE_320_180     = 8, ///< 针对编码分辨率为192*144的视频设置水印。
+		WATER_MARK_TYPE_320_240     = 1, //针对编码分辨率为320*240的视频设置水印。
+		WATER_MARK_TYPE_480_360     = 2, //针对编码分辨率为480*360的视频设置水印。
+		WATER_MARK_TYPE_640_480     = 3, //针对编码分辨率为640*480的视频设置水印。
+		WATER_MARK_TYPE_640_368     = 4, //针对编码分辨率为640*368的视频设置水印。
+		WATER_MARK_TYPE_960_540     = 5, //针对编码分辨率为960*540的视频设置水印。
+		WATER_MARK_TYPE_1280_720    = 6, //针对编码分辨率为1280*720的视频设置水印。
+		WATER_MARK_TYPE_192_144     = 7, //针对编码分辨率为192*144的视频设置水印。
+		WATER_MARK_TYPE_320_180     = 8, //针对编码分辨率为192*144的视频设置水印。
 		WATER_MARK_TYPE_MAX,
 	};
 
@@ -250,16 +250,16 @@ namespace ilive
 	*/
 	enum E_AudioDataSourceType
 	{
-		AUDIO_DATA_SOURCE_MIC           = 0, ///< 获取本地麦克风采集的音频数据(注意: 注册此类型回调后，即使没有打开麦克风，也会开始回调麦克风音频数据)。
-		AUDIO_DATA_SOURCE_MIXTOSEND     = 1, ///< 输入额外的音频数据，与本地发送的音频数据混音后发送出去。
-		AUDIO_DATA_SOURCE_SEND          = 2, ///< 获取发送方最终发送出去的音频数据。
-		AUDIO_DATA_SOURCE_MIXTOPLAY     = 3, ///< 输入额外的音频数据，与本地播放的音频数据混音后给扬声器播放出来。
-		AUDIO_DATA_SOURCE_PLAY          = 4, ///< 获取本地扬声器播放音频数据。
-		AUDIO_DATA_SOURCE_NETSTREM      = 5, ///< 获取接收方收到的音频数据。
-		AUDIO_DATA_SOURCE_VOICEDISPOSE  = 6, ///< 麦克风音频数据预处理。
-		AUDIO_DATA_SOURCE_SYNCMIXTOSEND = 7, ///< 发送混音输入，实时性更高。
-		AUDIO_DATA_SOURCE_AACRAWSTREAM  = 8, ///< 编码AAC数据获取，内部使用类型，暂不对外开放
-		AUDIO_DATA_SOURCE_END           = 9, ///< 结束标志。
+		AUDIO_DATA_SOURCE_MIC           = 0, //获取本地麦克风采集的音频数据(注意: 注册此类型回调后，即使没有打开麦克风，也会开始回调麦克风音频数据)。
+		AUDIO_DATA_SOURCE_MIXTOSEND     = 1, //输入额外的音频数据，与本地发送的音频数据混音后发送出去。
+		AUDIO_DATA_SOURCE_SEND          = 2, //获取发送方最终发送出去的音频数据。
+		AUDIO_DATA_SOURCE_MIXTOPLAY     = 3, //输入额外的音频数据，与本地播放的音频数据混音后给扬声器播放出来。
+		AUDIO_DATA_SOURCE_PLAY          = 4, //获取本地扬声器播放音频数据。
+		AUDIO_DATA_SOURCE_NETSTREM      = 5, //获取接收方收到的音频数据。
+		AUDIO_DATA_SOURCE_VOICEDISPOSE  = 6, //麦克风音频数据预处理。
+		AUDIO_DATA_SOURCE_SYNCMIXTOSEND = 7, //发送混音输入，实时性更高。
+		AUDIO_DATA_SOURCE_AACRAWSTREAM  = 8, //编码AAC数据获取，内部使用类型，暂不对外开放
+		AUDIO_DATA_SOURCE_END           = 9, //结束标志。
 	};
 
 	/**
@@ -267,11 +267,11 @@ namespace ilive
 	*/
 	enum E_AudioSrcType
 	{
-		AUDIO_SRC_TYPE_NONE			= 0,	///< 默认值，无意义。
-		AUDIO_SRC_TYPE_MIC			= 1,	///< 麦克风。
-		AUDIO_SRC_TYPE_ACCOMPANY	= 2,	///< 伴奏。
-		AUDIO_SRC_TYPE_MIX_INPUT	= 3,	///< 混音输入。
-		AUDIO_SRC_TYPE_MIX_OUTPUT	= 4,	///< 混音输出。
+		AUDIO_SRC_TYPE_NONE			= 0,	//默认值，无意义。
+		AUDIO_SRC_TYPE_MIC			= 1,	//麦克风。
+		AUDIO_SRC_TYPE_ACCOMPANY	= 2,	//伴奏。
+		AUDIO_SRC_TYPE_MIX_INPUT	= 3,	//混音输入。
+		AUDIO_SRC_TYPE_MIX_OUTPUT	= 4,	//混音输出。
 	};
 
 	/**
@@ -279,9 +279,9 @@ namespace ilive
 	*/
 	enum E_RootViewType
 	{
-		ROOT_VIEW_TYPE_NONE = 0,	///< 默认值，无意义。
-		ROOT_VIEW_TYPE_D3D	= 1,	///< Direct3D硬件加速
-		ROOT_VIEW_TYPE_GDI	= 2,	///< GDI
+		ROOT_VIEW_TYPE_NONE = 0,	//默认值，无意义。
+		ROOT_VIEW_TYPE_D3D	= 1,	//Direct3D硬件加速
+		ROOT_VIEW_TYPE_GDI	= 2,	//GDI
 	};
 
 	/**
@@ -289,9 +289,9 @@ namespace ilive
 	*/
 	enum E_ViewMode
 	{
-		VIEW_MODE_NONE	= 0,		///< 默认值，无意义。
-		VIEW_MODE_FIT		= 1,	///< 按照显示区域的比例进行缩放后填满区域。
-		VIEW_MODE_HIDDEN	= 2,	///< 按照图像宽高的比例进行缩放后居中填充区域。
+		VIEW_MODE_NONE	= 0,		//默认值，无意义。
+		VIEW_MODE_FIT		= 1,	//按照显示区域的比例进行缩放后填满区域。
+		VIEW_MODE_HIDDEN	= 2,	//按照图像宽高的比例进行缩放后居中填充区域。
 	};
 
 	/**
@@ -299,8 +299,8 @@ namespace ilive
 	*/
 	enum E_PushSvrType
 	{
-		E_CustomSupport,	///< 0: 自研
-		E_CloudSupport,		///< 1: 云支持
+		E_CustomSupport,	//0: 自研
+		E_CloudSupport,		//1: 云支持
 	};
 
 	/**
@@ -308,8 +308,8 @@ namespace ilive
 	*/
 	enum E_ChannelMode
 	{
-		E_ChannelIMRestAPI,	///< IMSDKRestAPI通道,必须在进房时带上tls加密版本的privateMapKey(默认)
-		E_ChannelIMSDK,		///< IMSDK通道(iLiveSDK 1.9.0之前的版本所用的通道)
+		E_ChannelIMRestAPI,	//IMSDKRestAPI通道,必须在进房时带上tls加密版本的privateMapKey(默认)
+		E_ChannelIMSDK,		//IMSDK通道(iLiveSDK 1.9.0之前的版本所用的通道)
 	};
 
 	/**
@@ -317,9 +317,9 @@ namespace ilive
 	*/
 	enum E_CustomDataMode
 	{
-		E_CUSTOMDATA_WITH_AVDATA = 2,	///< 跟随音视频数据发送
-		E_CUSTOMDATA_WITH_SEIDATA = 3,	///< 附带在视频帧的SEI段内发送，在转码后台会被以SEI段的形式插入到旁路流中，payload type为0xf3
-		E_CUSTOMDATA_WITH_NALU = 4,		///< 附带在视频帧的SEI段内发送一端NALU，在转码后台会被以视频参考帧的形式插入到旁路流中
+		E_CUSTOMDATA_WITH_AVDATA = 2,	//跟随音视频数据发送
+		E_CUSTOMDATA_WITH_SEIDATA = 3,	//附带在视频帧的SEI段内发送，在转码后台会被以SEI段的形式插入到旁路流中，payload type为0xf3
+		E_CUSTOMDATA_WITH_NALU = 4,		//附带在视频帧的SEI段内发送一端NALU，在转码后台会被以视频参考帧的形式插入到旁路流中
 	};
 	
 	/**
@@ -335,15 +335,15 @@ namespace ilive
 	};
 
 	/// 音视频通话的通话能力权限位。
-	const uint64 AUTH_BITS_DEFAULT              = -1;			///< 所有权限。
-	const uint64 AUTH_BITS_CREATE_ROOM          = 0x00000001;	///< 创建房间权限。
-	const uint64 AUTH_BITS_JOIN_ROOM            = 0x00000002;	///< 加入房间的权限。
-	const uint64 AUTH_BITS_SEND_AUDIO           = 0x00000004;	///< 发送音频的权限。
-	const uint64 AUTH_BITS_RECV_AUDIO           = 0x00000008;	///< 接收音频的权限。
-	const uint64 AUTH_BITS_SEND_CAMERA_VIDEO    = 0x00000010;	///< 发送摄像头视频的权限。
-	const uint64 AUTH_BITS_RECV_CAMERA_VIDEO    = 0x00000020;	///< 接收摄像头视频的权限。
-	const uint64 AUTH_BITS_SEND_SCREEN_VIDEO    = 0x00000040;	///< 发送屏幕视频的权限。
-	const uint64 AUTH_BITS_RECV_SCREEN_VIDEO    = 0x00000080;	///< 接收屏幕视频的权限。
+	const uint64 AUTH_BITS_DEFAULT              = -1;			//所有权限。
+	const uint64 AUTH_BITS_CREATE_ROOM          = 0x00000001;	//创建房间权限。
+	const uint64 AUTH_BITS_JOIN_ROOM            = 0x00000002;	//加入房间的权限。
+	const uint64 AUTH_BITS_SEND_AUDIO           = 0x00000004;	//发送音频的权限。
+	const uint64 AUTH_BITS_RECV_AUDIO           = 0x00000008;	//接收音频的权限。
+	const uint64 AUTH_BITS_SEND_CAMERA_VIDEO    = 0x00000010;	//发送摄像头视频的权限。
+	const uint64 AUTH_BITS_RECV_CAMERA_VIDEO    = 0x00000020;	//接收摄像头视频的权限。
+	const uint64 AUTH_BITS_SEND_SCREEN_VIDEO    = 0x00000040;	//发送屏幕视频的权限。
+	const uint64 AUTH_BITS_RECV_SCREEN_VIDEO    = 0x00000080;	//接收屏幕视频的权限。
 
 	/**
 	@brief 被挤下线回调函数指针类型;
@@ -591,9 +591,9 @@ namespace ilive
 			}
 		}
 
-		E_ImageFormat format; ///< 图片文件格式，发送时不用填写，sdk自动根据文件名检测
-		String path;///< 发送图片的本地地址，仅发送有效
-		Vector<Image*> images;///< 接收的图片，仅接收有效
+		E_ImageFormat format; //图片文件格式，发送时不用填写，sdk自动根据文件名检测
+		String path;//发送图片的本地地址，仅发送有效
+		Vector<Image*> images;//接收的图片，仅接收有效
 	};
 
 	/**
@@ -738,30 +738,30 @@ namespace ilive
 		{
 		}
 
-		E_AudioCategory			audioCategory;			///< 音视场景策略,详细信息见E_AudioCategory的定义.
-		uint32					roomId;					///< 房间ID,由业务侧创建并维护的房间ID
-		E_IMGroupType			groupType;				///< 创建房间时，所创建的IM群类型
-		String					groupId;				///< IM群组ID;此字段仅大咖模式下使用;
-		bool					joinImGroup;			///< 是否加入IM群组,此字段仅大咖模式下使用(默认为true，如果设置为false，需要业务侧后台将用户拉进IM群组);
+		E_AudioCategory			audioCategory;			//音视场景策略,详细信息见E_AudioCategory的定义.
+		uint32					roomId;					//房间ID,由业务侧创建并维护的房间ID
+		E_IMGroupType			groupType;				//创建房间时，所创建的IM群类型
+		String					groupId;				//IM群组ID;此字段仅大咖模式下使用;
+		bool					joinImGroup;			//是否加入IM群组,此字段仅大咖模式下使用(默认为true，如果设置为false，需要业务侧后台将用户拉进IM群组);
 		/**
 		@brief 通话能力权限位;
 		@details 主播应当设置为AUTH_BITS_DEFAULT,连麦观众设置为AUTH_BITS_DEFAULT & (~AUTH_BITS_CREATE_ROOM),观众设置为AUTH_BITS_JOIN_ROOM|AUTH_BITS_RECV_AUDIO|AUTH_BITS_RECV_CAMERA_VIDEO|AUTH_BITS_RECV_SCREEN_VIDEO;
 		@note 1.9.0.0开始，sdk默认使用E_ChannelIMRestAPI通道，此通道模式下，authBits参数无效，应当通过privateMapKey控制权限位;参见setChannelMode接口定义.
 		*/
 		uint64					authBits;
-		String					controlRole;			///< 角色名，web端音视频参数配置工具所设置的角色名
-		String					privateMapKey;			///< 通话能力权限位的加密串
-		bool					autoRequestCamera;		///< 房间内有成员打开摄像头时，是否自动请求画面;
-		bool					autoRequestScreen;		///< 房间内有成员打开屏幕分享时，是否自动请求画面;
-		bool					autoRequestMediaFile;	///< 房间内有成员打开播片时，是否自动请求画面;
-		uint32					timeElapse;				///< sdk执行qualityParamCallback回调的时间间隔,单位毫秒(SDK内部1秒更新一次，所以,timeElapse小于1000将会被修正到1000)。
-		bool					enableHwEnc;			///< 摄像头是否使用硬件编码(极速模式下，请勿使用硬编解)。
-		bool					enableHwDec;			///< 摄像头是否使用硬件解码(极速模式下，请勿使用硬编解)。
-		bool					enableHwScreenEnc;		///< 屏幕分享是否使用硬件编码(极速模式下，请勿使用硬编解)。
-		bool					enableHwScreenDec;		///< 屏幕分享是否使用硬件解码(极速模式下，请勿使用硬编解)。
-		String					bussInfo;				///< 业务侧自定义数据
+		String					controlRole;			//角色名，web端音视频参数配置工具所设置的角色名
+		String					privateMapKey;			//通话能力权限位的加密串
+		bool					autoRequestCamera;		//房间内有成员打开摄像头时，是否自动请求画面;
+		bool					autoRequestScreen;		//房间内有成员打开屏幕分享时，是否自动请求画面;
+		bool					autoRequestMediaFile;	//房间内有成员打开播片时，是否自动请求画面;
+		uint32					timeElapse;				//sdk执行qualityParamCallback回调的时间间隔,单位毫秒(SDK内部1秒更新一次，所以,timeElapse小于1000将会被修正到1000)。
+		bool					enableHwEnc;			//摄像头是否使用硬件编码(极速模式下，请勿使用硬编解)。
+		bool					enableHwDec;			//摄像头是否使用硬件解码(极速模式下，请勿使用硬编解)。
+		bool					enableHwScreenEnc;		//屏幕分享是否使用硬件编码(极速模式下，请勿使用硬编解)。
+		bool					enableHwScreenDec;		//屏幕分享是否使用硬件解码(极速模式下，请勿使用硬编解)。
+		String					bussInfo;				//业务侧自定义数据
 
-		bool					enableMuteBag;			///< 是否填充静音包;SDK内部通过registAudioDataCallback()注册AUDIO_DATA_SOURCE_MIXTOSEND类型音频回调，在回调中填充静音音频数据;除非特殊需求,否则保持默认值即可;
+		bool					enableMuteBag;			//是否填充静音包;SDK内部通过registAudioDataCallback()注册AUDIO_DATA_SOURCE_MIXTOSEND类型音频回调，在回调中填充静音音频数据;除非特殊需求,否则保持默认值即可;
 
 		/**
 		@brief SDK主动退出房间回调;
@@ -812,9 +812,9 @@ namespace ilive
 		{
 		}
 
-		E_RecordDataType	recordDataType; ///< 录制的数据类型,参见E_RecordDataType定义。
-		String				fileName;		///< 录制后的文件名。
-		int					classId;		///< 视频分类ID(暂无效)。
+		E_RecordDataType	recordDataType; //录制的数据类型,参见E_RecordDataType定义。
+		String				fileName;		//录制后的文件名。
+		int					classId;		//视频分类ID(暂无效)。
 	};
 
 	/**
@@ -836,9 +836,9 @@ namespace ilive
 		{
 		}
 
-		E_PushDataType				pushDataType;		///< 推送数据类型，参见E_PushDataType定义.
-		E_iLiveStreamEncode			encode;				///< 推流数据编码方式，参见E_TIMStreamEncode定义.
-		E_RecordFileType			recordFileType;		///< 推流时自动录制的文件类型，参见E_RecordFileType定义.
+		E_PushDataType				pushDataType;		//推送数据类型，参见E_PushDataType定义.
+		E_iLiveStreamEncode			encode;				//推流数据编码方式，参见E_TIMStreamEncode定义.
+		E_RecordFileType			recordFileType;		//推流时自动录制的文件类型，参见E_RecordFileType定义.
 		/**
 		@brief 是否纯音频推流
 		@remark 
@@ -850,14 +850,14 @@ namespace ilive
 			(1)如果需要推流时自动录制文件，recordFileType需要设置为RecordFile_MP3;<br/>
 			(2)使用纯音频推流时，pushDataType设置为E_PushCamera和E_PushScreen，效果一样，建议使用默认值E_PushCamera;
 		*/
-		bool						bOnlyPushAudio;		///< 纯音频推流,纯音频推流时，如果要录制文件，需要将recordFileType指定为RecordFile_MP3
+		bool						bOnlyPushAudio;		//纯音频推流,纯音频推流时，如果要录制文件，需要将recordFileType指定为RecordFile_MP3
 		
 		Deprecated
-		E_PushSvrType				pushSvrType;		///< 推流机器环境类型(暂时无效，使用默认值即可);
+		E_PushSvrType				pushSvrType;		//推流机器环境类型(暂时无效，使用默认值即可);
 		
-		uint32						recordId;			///< 用户自定义RecordId(对应录制视频给业务侧服务器回调的字段stream_param的cliRecoId);
+		uint32						recordId;			//用户自定义RecordId(对应录制视频给业务侧服务器回调的字段stream_param的cliRecoId);
 	
-		String						StreamId;			///< 用户自定义流ID
+		String						StreamId;			//用户自定义流ID
 	};
 
 	/**
@@ -865,9 +865,9 @@ namespace ilive
 	*/
 	struct LiveUrl
 	{
-		E_iLiveStreamEncode			encodeType;	///< 视频流编码类型
-		String						url;		///< 视频流播放URL
-		E_RateType					rateType;	///< 码率档位信息
+		E_iLiveStreamEncode			encodeType;	//视频流编码类型
+		String						url;		//视频流播放URL
+		E_RateType					rateType;	//码率档位信息
 	};
 	
 	/**
@@ -880,9 +880,9 @@ namespace ilive
 		{
 		}
 
-		Vector<LiveUrl>		urls;		///< Url列表
-		uint64				channelId;	///< 频道ID,直播码模式下，始终为0;
-		uint32				tapeTaskId; ///< 录制标记为录制的时候带回录制task_id有效
+		Vector<LiveUrl>		urls;		//Url列表
+		uint64				channelId;	//频道ID,直播码模式下，始终为0;
+		uint32				tapeTaskId; //录制标记为录制的时候带回录制task_id有效
 	};
 
 	/**
@@ -901,12 +901,12 @@ namespace ilive
 		{
 		}
 
-		E_ColorFormat	colorFormat;	///< 色彩格式，详情见ColorFormat的定义。
-		uint32			width;			///< 宽度，单位：像素。
-		uint32			height;			///< 高度，单位：像素。
-		bool			externalData;	///< 数据是否来自外部摄像头。
-		E_VideoSrc		srcType;		///< 视频源类型，详情见VideoSrcType的定义。
-		uint32			rotate;			///< 视频画面旋转角度，在渲染时需要考虑此角度值，0、1、2、3分别表示0°、90°、180°、270°
+		E_ColorFormat	colorFormat;	//色彩格式，详情见ColorFormat的定义。
+		uint32			width;			//宽度，单位：像素。
+		uint32			height;			//高度，单位：像素。
+		bool			externalData;	//数据是否来自外部摄像头。
+		E_VideoSrc		srcType;		//视频源类型，详情见VideoSrcType的定义。
+		uint32			rotate;			//视频画面旋转角度，在渲染时需要考虑此角度值，0、1、2、3分别表示0°、90°、180°、270°
 	};
 
 	/**
@@ -921,11 +921,11 @@ namespace ilive
 		{
 		}
 
-		String			identifier;	///< 视频帧所属的房间成员id。
-		VideoFrameDesc	desc;		///< 视频帧描述。
-		uint32			dataSize;	///< 视频帧的数据缓冲区大小，单位：字节。
-		uint8*			data;		///< 视频帧的数据缓冲区，SDK内部会管理缓冲区的分配和释放。
-		uint64			timeStamp;  ///< 视频帧的时间戳，SDK内部会自动填写好，utc时间，0为无效值。
+		String			identifier;	//视频帧所属的房间成员id。
+		VideoFrameDesc	desc;		//视频帧描述。
+		uint32			dataSize;	//视频帧的数据缓冲区大小，单位：字节。
+		uint8*			data;		//视频帧的数据缓冲区，SDK内部会管理缓冲区的分配和释放。
+		uint64			timeStamp;  //视频帧的时间戳，SDK内部会自动填写好，utc时间，0为无效值。
 	};
 
 	/**
@@ -1012,32 +1012,32 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32	kbpsSend;			///< 发包速率,单位kbps
-		uint16	lossRateSend;		///< 上行丢包率，从Hello的回包中获得
-		uint16	lossRateSendUdt;	///< udt后上行丢包率
-		uint32	packetSend;			///< 发包速率,每秒发包的个数
-		uint16	lossModelSend;		///< 上行平均连续丢包个数，从Hello的回包中获得
+		uint32	kbpsSend;			//发包速率,单位kbps
+		uint16	lossRateSend;		//上行丢包率，从Hello的回包中获得
+		uint16	lossRateSendUdt;	//udt后上行丢包率
+		uint32	packetSend;			//发包速率,每秒发包的个数
+		uint16	lossModelSend;		//上行平均连续丢包个数，从Hello的回包中获得
 
-		uint32	kbpsRecv;			///< 收包速率,单位kbps
-		uint16	lossRateRecvUdt;	///< udt后下行丢包率
-		uint16	lossRateRecv;		///< 下行丢包率
-		uint32	packetRecv;			///< 收包速率,每秒收包的个数
-		uint32	unsendUdt;			///< udt未发送包数
-		uint32	interfaceIP;		///< 接口机ip
-		uint16	interfacePort;		///< 与接口机连接的端口
-		uint32	clientIP;			///< 客户端ip
-		bool	isTcp;				///< 是否为tcp
-		uint16	lossModelRecv;		///< 下行平均连续丢包个数
+		uint32	kbpsRecv;			//收包速率,单位kbps
+		uint16	lossRateRecvUdt;	//udt后下行丢包率
+		uint16	lossRateRecv;		//下行丢包率
+		uint32	packetRecv;			//收包速率,每秒收包的个数
+		uint32	unsendUdt;			//udt未发送包数
+		uint32	interfaceIP;		//接口机ip
+		uint16	interfacePort;		//与接口机连接的端口
+		uint32	clientIP;			//客户端ip
+		bool	isTcp;				//是否为tcp
+		uint16	lossModelRecv;		//下行平均连续丢包个数
 
-		uint16	cpuRateApp;			///< App进程的CPU使用率×10000(例如：3456对应于34.56%)
-		uint16	cpuRateSys;			///< 当前系统的CPU使用率×10000(例如：3456对应于34.56%)
-		uint32	rtt;				///< 往返时延（Round-Trip Time），单位毫秒，统计方法：Hello SendData 的时候记一个 TickCount，Hello Reply 的时候记一个 TickCount，两者的差值为时延
+		uint16	cpuRateApp;			//App进程的CPU使用率×10000(例如：3456对应于34.56%)
+		uint16	cpuRateSys;			//当前系统的CPU使用率×10000(例如：3456对应于34.56%)
+		uint32	rtt;				//往返时延（Round-Trip Time），单位毫秒，统计方法：Hello SendData 的时候记一个 TickCount，Hello Reply 的时候记一个 TickCount，两者的差值为时延
 
-		uint16	udtSMode;			///< udt发送端模式
-		uint16	udtRMode;			///< udt接收端模式
-		uint16	udtSendq;			///< udt发送端队列最大时间长度
-		uint16	udtRecvq;			///< udt接收端队列最大时间长度
-		bool	udtEnable;			///< udt switch
+		uint16	udtSMode;			//udt发送端模式
+		uint16	udtRMode;			//udt接收端模式
+		uint16	udtSendq;			//udt发送端队列最大时间长度
+		uint16	udtRecvq;			//udt接收端队列最大时间长度
+		bool	udtEnable;			//udt switch
 	};
 
 	/**
@@ -1061,9 +1061,9 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32	width;    ///< 视频宽
-		uint32	height;   ///< 视频高
-		uint32	fps;      ///< 帧率
+		uint32	width;    //视频宽
+		uint32	height;   //视频高
+		uint32	fps;      //帧率
 	};
 
 	/**
@@ -1143,14 +1143,14 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32 viewType;	///< 画面类型，作为编码信息索引：0-主路画面 2-辅路
-		uint32 width;       ///< 视频编码宽
-		uint32 height;      ///< 视频编码高
-		uint32 fps;         ///< 视频编码实时帧率×10
-		uint32 bitrate;     ///< 视频编码码率(无包头)
-		uint32 angle;       ///< 角度
-		uint32 encodeType;	///< 视频编码类型
-		uint32 hw;			///< 是否开硬件编码
+		uint32 viewType;	//画面类型，作为编码信息索引：0-主路画面 2-辅路
+		uint32 width;       //视频编码宽
+		uint32 height;      //视频编码高
+		uint32 fps;         //视频编码实时帧率×10
+		uint32 bitrate;     //视频编码码率(无包头)
+		uint32 angle;       //角度
+		uint32 encodeType;	//视频编码类型
+		uint32 hw;			//是否开硬件编码
 
 		iLiveVideoEncNewGOPInterParam gopparam; //新的GOP参数
 	};
@@ -1189,13 +1189,13 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32 lossRate;						///< 视频发送参数丢包率
-		uint32 iFec;							///< 视频发送参数I帧fec
-		uint32 spFec;							///< 视频发送参数sp帧
-		uint32 pkt;								///< 视频发送包数
-		uint32 STnSBGainLoss12s;				///< 人为补零、人为丢包
-		uint32 STnSBDecLostMaxConcal12s;		///< 解码端统计的丢包、jitter中统计的EOS、大于一定数量的连续丢包
-		uint32 STnSBBreakSmallBreakContiPlc12s;	///< 卡顿次数、可能的小卡顿次数、连续plc
+		uint32 lossRate;						//视频发送参数丢包率
+		uint32 iFec;							//视频发送参数I帧fec
+		uint32 spFec;							//视频发送参数sp帧
+		uint32 pkt;								//视频发送包数
+		uint32 STnSBGainLoss12s;				//人为补零、人为丢包
+		uint32 STnSBDecLostMaxConcal12s;		//解码端统计的丢包、jitter中统计的EOS、大于一定数量的连续丢包
+		uint32 STnSBBreakSmallBreakContiPlc12s;	//卡顿次数、可能的小卡顿次数、连续plc
 	};
 
 	/**
@@ -1235,15 +1235,15 @@ namespace ilive
 			return szRet;
 		}
 
-		String userId;		///< 解码用户
-		uint32 viewType;	///< 画面类型，作为编码信息索引：0-主路画面 2-辅路
-		uint32 width;		///< 视频解码宽
-		uint32 height;		///< 视频解码高
-		uint32 fps;			///< 视频解码出的帧率×10
-		uint32 bitrate;		///< 视频解码出的码率(无包头)
-		uint32 hw;			///< 是否开启硬编解
-		uint32 codecType;	///< 解码类型
-		uint32 hwdecDelay;	///< 解码延迟
+		String userId;		//解码用户
+		uint32 viewType;	//画面类型，作为编码信息索引：0-主路画面 2-辅路
+		uint32 width;		//视频解码宽
+		uint32 height;		//视频解码高
+		uint32 fps;			//视频解码出的帧率×10
+		uint32 bitrate;		//视频解码出的码率(无包头)
+		uint32 hw;			//是否开启硬编解
+		uint32 codecType;	//解码类型
+		uint32 hwdecDelay;	//解码延迟
 	};
 
 	/**
@@ -1267,9 +1267,9 @@ namespace ilive
 			return szRet;
 		}
 
-		float	lossRate;		///< 视频接收丢包率
-		uint32	dwJitterR;		///< 视频接收抖动
-		uint32	dwBRR;			///< 视频接收码率
+		float	lossRate;		//视频接收丢包率
+		uint32	dwJitterR;		//视频接收抖动
+		uint32	dwBRR;			//视频接收码率
 	};
 
 	/**
@@ -1320,10 +1320,10 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32 width;			///< 视频宽
-		uint32 height;			///< 视频高
-		uint32 fps;				///< 帧率
-		uint32 bitrate;			///< 码率
+		uint32 width;			//视频宽
+		uint32 height;			//视频高
+		uint32 fps;				//帧率
+		uint32 bitrate;			//码率
 		uint32 encodeType;		///<视频流控下发参数编码类型
 		uint32 minQp;			///<视频流控下发最小质量
 		uint32 maxQp;			///<视频流控下发最大质量
@@ -1343,7 +1343,7 @@ namespace ilive
 		uint32 gopType;			///<视频流控下发参数gop类型
 		uint32 gop;				///<视频流控下发参数gop
 		uint32 encMode;			///<视频流控下发编码模式
-		uint32 hw;				///< 0:不启用硬件加速；1:启用硬件加速
+		uint32 hw;				//0:不启用硬件加速；1:启用硬件加速
 	};
 
 	/**
@@ -1366,8 +1366,8 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32 sampleRate;		///< 采样率
-		uint32 channelCount;	///< 通道数，1表示单声道(mono)，2表示立体声(stereo)
+		uint32 sampleRate;		//采样率
+		uint32 channelCount;	//通道数，1表示单声道(mono)，2表示立体声(stereo)
 	};
 
 	/**
@@ -1391,9 +1391,9 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32	encodeType;		///< 音频编码类型
-		uint32	encodeBitrate;	///< 音频编码码率
-		uint32	vad;			///< 音频编码vad参数
+		uint32	encodeType;		//音频编码类型
+		uint32	encodeBitrate;	//音频编码码率
+		uint32	vad;			//音频编码vad参数
 	};
 
 	/**
@@ -1419,11 +1419,11 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32	lossRate;		///< 音频发送丢包率
-		uint32	FEC;			///< 音频发送FEC
-		uint32	jitter;			///< 音频发送抖动
-		uint32	sendBr;			///< 音频发送发送码率
-		uint32	sendBrUdt;		///< 音频发送发送码率+header
+		uint32	lossRate;		//音频发送丢包率
+		uint32	FEC;			//音频发送FEC
+		uint32	jitter;			//音频发送抖动
+		uint32	sendBr;			//音频发送发送码率
+		uint32	sendBrUdt;		//音频发送发送码率+header
 	};
 
 	/**
@@ -1448,10 +1448,10 @@ namespace ilive
 			return szRet;
 		}
 
-		String userId;       ///< 音频解码用户
-		uint32 decodeType;   ///< 音频解码类型
-		uint32 sampleRate;   ///< 音频编码采样率
-		uint32 channelCount; ///< 通道数，1表示单声道(mono)，2表示立体声(stereo)
+		String userId;       //音频解码用户
+		uint32 decodeType;   //音频解码类型
+		uint32 sampleRate;   //音频编码采样率
+		uint32 channelCount; //通道数，1表示单声道(mono)，2表示立体声(stereo)
 	};
 	
 	/**
@@ -1475,9 +1475,9 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32 playDelay;	///< 音频接收播放时延
-		uint32 lossRate;	///< 音频接收丢包率
-		uint32 recvBr;		///< 音频Receive码率
+		uint32 playDelay;	//音频接收播放时延
+		uint32 lossRate;	//音频接收丢包率
+		uint32 recvBr;		//音频Receive码率
 	};
 
 	/**
@@ -1532,22 +1532,22 @@ namespace ilive
 			return szRet;
 		}
 
-		uint32 sampleRate;             ///< 采样率
-		uint32 channelCount;           ///< 通道数，1表示单声道(mono)，2表示立体声(stereo)
-		uint32 codecType;              ///< 编码类型
-		uint32 bitrate;                ///< 码率
-		uint8  aecEnable;              ///< AEC功能是否开启
-		uint8  agcEnable;              ///< AGC功能是否开启
-		uint32 fec;                    ///< 音频流控下发fec
-		uint32 vad;                    ///< 音频流控下发vad
-		uint32 packDuration;          ///< 音频流控下发pack
-		uint32 recn;                   ///< 音频流控下发recn
-		uint32 recm;                   ///< 音频流控下发recm
-		uint32 audioMtu;              ///< 音频流控下发mtu
-		uint32 jitterMinDelay;       ///< Jitter的最小延时，单位毫秒
-		uint32 jitterMinMaxDelay;   ///< Jitter最大延时的最小阀值
-		uint32 jitterMaxMaxDelay;   ///< Jitter最大延时的最大阀值
-		uint32 jitterDropScale;      ///< Jitter最大延时的损失比例，百分比eg:10%为10,50%为50
+		uint32 sampleRate;             //采样率
+		uint32 channelCount;           //通道数，1表示单声道(mono)，2表示立体声(stereo)
+		uint32 codecType;              //编码类型
+		uint32 bitrate;                //码率
+		uint8  aecEnable;              //AEC功能是否开启
+		uint8  agcEnable;              //AGC功能是否开启
+		uint32 fec;                    //音频流控下发fec
+		uint32 vad;                    //音频流控下发vad
+		uint32 packDuration;          //音频流控下发pack
+		uint32 recn;                   //音频流控下发recn
+		uint32 recm;                   //音频流控下发recm
+		uint32 audioMtu;              //音频流控下发mtu
+		uint32 jitterMinDelay;       //Jitter的最小延时，单位毫秒
+		uint32 jitterMinMaxDelay;   //Jitter最大延时的最小阀值
+		uint32 jitterMaxMaxDelay;   //Jitter最大延时的最大阀值
+		uint32 jitterDropScale;      //Jitter最大延时的损失比例，百分比eg:10%为10,50%为50
 	};
 
 	/**
@@ -1646,34 +1646,34 @@ namespace ilive
 			return szRet;
 		}
 
-		uint64							tickCountBegin;		///< 统计开始时时间点，使用本地TickCount
-		uint64							tickCountEnd;		///< 统计结束的时间点，使用本地TickCount
+		uint64							tickCountBegin;		//统计开始时时间点，使用本地TickCount
+		uint64							tickCountEnd;		//统计结束的时间点，使用本地TickCount
 
-		String							avsdkVersion;		///< avsdk版本号
-		uint16							exeCpuRate;			///< 应用CPU使用率×10000(例如：3456对应于34.56%)
-		uint16							sysCpuRate;			///< 系统CPU使用率×10000(例如：3456对应于34.56%)
+		String							avsdkVersion;		//avsdk版本号
+		uint16							exeCpuRate;			//应用CPU使用率×10000(例如：3456对应于34.56%)
+		uint16							sysCpuRate;			//系统CPU使用率×10000(例如：3456对应于34.56%)
 		
-		iLiveNetworkStatParam			networkParams;		///<  网络层相关的统计参数
+		iLiveNetworkStatParam			networkParams;		// 网络层相关的统计参数
 
-		iLiveVideoCaptureParam			videoCaptureParam;	///< 视频采集参数			
-		Vector<iLiveVideoEncodeParam>	videoEncodeParams;	///< 视频编码参数
-		iLiveVideoSendParam				videoSendParam;		///< 视频发送参数
+		iLiveVideoCaptureParam			videoCaptureParam;	//视频采集参数			
+		Vector<iLiveVideoEncodeParam>	videoEncodeParams;	//视频编码参数
+		iLiveVideoSendParam				videoSendParam;		//视频发送参数
 
-		Vector<iLiveVideoDecodeParam>	videoDecodeParams;	///< 视频解码参数
-		Vector<iLiveVideoRecvParam>		videoRecvParams;	///< 视频接收参数
-		bool							isAnchor;			///< 是否为主播(只要有视频上行就认为是主播)
+		Vector<iLiveVideoDecodeParam>	videoDecodeParams;	//视频解码参数
+		Vector<iLiveVideoRecvParam>		videoRecvParams;	//视频接收参数
+		bool							isAnchor;			//是否为主播(只要有视频上行就认为是主播)
 
-		iLiveVideoQosParam				videoMainQosParam;	///< 主路视频流控下发参数
-		iLiveVideoQosParam				videoAuxQosParam;	///< 辅路视频流控下发参数
+		iLiveVideoQosParam				videoMainQosParam;	//主路视频流控下发参数
+		iLiveVideoQosParam				videoAuxQosParam;	//辅路视频流控下发参数
 
-		iLiveAudioCaptureParam			audioCaptureParam;	///< 音频采集信息
-		iLiveAudioEncodeParam			audioEncodeParams;	///< 音频编码参数(此参数暂时为0，后续会修正)
-		iLiveAudioSendParam				audioSendParam;		///< 音频发送信息
+		iLiveAudioCaptureParam			audioCaptureParam;	//音频采集信息
+		iLiveAudioEncodeParam			audioEncodeParams;	//音频编码参数(此参数暂时为0，后续会修正)
+		iLiveAudioSendParam				audioSendParam;		//音频发送信息
 
-		Vector<iLiveAudioDecodeParam>	audioDecodeParams;	///< 音频解码参数(此参数暂时为0，后续会修正)
-		iLiveAudioRecvParam				audioRecvParam;		///< 音频接收信息
-		iLiveAudioQosParam				audioQosParam;		///< 音频流控下发参数
-		uint32							audioCategory;		///< 音频场景
+		Vector<iLiveAudioDecodeParam>	audioDecodeParams;	//音频解码参数(此参数暂时为0，后续会修正)
+		iLiveAudioRecvParam				audioRecvParam;		//音频接收信息
+		iLiveAudioQosParam				audioQosParam;		//音频流控下发参数
+		uint32							audioCategory;		//音频场景
 	};
 
 	/**
@@ -1681,12 +1681,12 @@ namespace ilive
 	*/
 	struct iLiveSpeedTestReport
 	{
-		int		index;			///< 此接口机对应的索引
-		int		total;			///< 总共测速的接口机数量
-		String	ip;				///< 此接口机的ip
-		int		upLostRate;		///< 上行丢包率×10000(例如：3456对应于34.56%)
-		int		downLostRate;	///< 下行丢包率×10000(例如：3456对应于34.56%)
-		int		rtt;			///< 平均往返时延(ms)
+		int		index;			//此接口机对应的索引
+		int		total;			//总共测速的接口机数量
+		String	ip;				//此接口机的ip
+		int		upLostRate;		//上行丢包率×10000(例如：3456对应于34.56%)
+		int		downLostRate;	//下行丢包率×10000(例如：3456对应于34.56%)
+		int		rtt;			//平均往返时延(ms)
 	};
 
 	/**
@@ -1735,10 +1735,10 @@ namespace ilive
 		{
 		}
 
-		uint32			sampleRate;	///< 采样率，单位：赫兹(Hz)
-		uint32			channelNum;	///< 通道数，1表示单声道(mono)，2表示立体声(stereo)
-		uint32			bits;		///< 音频数据位宽。SDK1.6版本暂固定为16。
-		E_AudioSrcType	srcType;	///< 音频源类型。
+		uint32			sampleRate;	//采样率，单位：赫兹(Hz)
+		uint32			channelNum;	//通道数，1表示单声道(mono)，2表示立体声(stereo)
+		uint32			bits;		//音频数据位宽。SDK1.6版本暂固定为16。
+		E_AudioSrcType	srcType;	//音频源类型。
 	};
 
 	/**
@@ -1753,11 +1753,11 @@ namespace ilive
 		{
 		}
 
-		String				identifier; ///< 音频帧所属的房间成员id。
-		iLiveAudioFrameDesc	desc;		///< 音频帧描述。
-		uint32				dataSize;	///< 音频帧的数据缓冲区大小，单位：字节。
-		uint8*				data;		///< 音频帧的数据缓冲区，SDK内部会管理缓冲区的分配和释放。
-		uint64				timeStamp;	///< 音频帧的时间戳，SDK内部会自动填写好，utc时间，0为无效值。
+		String				identifier; //音频帧所属的房间成员id。
+		iLiveAudioFrameDesc	desc;		//音频帧描述。
+		uint32				dataSize;	//音频帧的数据缓冲区大小，单位：字节。
+		uint8*				data;		//音频帧的数据缓冲区，SDK内部会管理缓冲区的分配和释放。
+		uint64				timeStamp;	//音频帧的时间戳，SDK内部会自动填写好，utc时间，0为无效值。
 	};
 
 	/**
@@ -1772,7 +1772,7 @@ namespace ilive
 		{
 		}
 
-		String				id;			///< 调用fillCustomData时，不需要填写，sdk会自动填充
+		String				id;			//调用fillCustomData时，不需要填写，sdk会自动填充
 		uint32				dataSize;
 		uint8*				data; 
 		E_CustomDataMode	pushMode;
@@ -2827,13 +2827,13 @@ namespace ilive
 	{
 		iLiveView() : mode(VIEW_MODE_NONE), exclusive(false), x(0), y(0), width(0), height(0), zorder(5){}
 
-		E_ViewMode	mode;      ///< 渲染拉伸模式。
-		bool		exclusive; ///< 是否独占整个窗口，为true时, (x, y, width, height) 等价于 (0，0，窗口宽度，窗口高度)。
-		uint32		x;         ///< 显示区域左上角坐标x。
-		uint32		y;         ///< 显示区域左上角坐标y。
-		uint32		width;     ///< 显示区域像素宽。
-		uint32		height;    ///< 显示区域像素高。
-		uint32		zorder;    ///< zorder, 用于表示显示区域层级关系。
+		E_ViewMode	mode;      //渲染拉伸模式。
+		bool		exclusive; //是否独占整个窗口，为true时, (x, y, width, height) 等价于 (0，0，窗口宽度，窗口高度)。
+		uint32		x;         //显示区域左上角坐标x。
+		uint32		y;         //显示区域左上角坐标y。
+		uint32		width;     //显示区域像素宽。
+		uint32		height;    //显示区域像素高。
+		uint32		zorder;    //zorder, 用于表示显示区域层级关系。
 	};
 
 	/**
